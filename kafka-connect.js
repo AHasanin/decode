@@ -38,10 +38,10 @@ module.exports = () => {
         console.log({
           partition,
           offset: message.offset,
-          value: message.value,
+          value: message.value.toString(),
         });
-        const decodedValue = type.fromBuffer(message.value);
-        console.log(decodedValue);
+        // const decodedValue = type.fromBuffer(message.value);
+        // console.log(decodedValue);
 
       },
     })
