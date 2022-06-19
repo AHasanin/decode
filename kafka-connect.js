@@ -31,17 +31,17 @@ module.exports = () => {
 
     // Consuming
     await consumer.connect()
-    await consumer.subscribe({ topic: 'high-trans', fromBeginning: true });
+    await consumer.subscribe({ topic: 'high-trans' });
 
     await consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
         console.log({
           partition,
           offset: message.offset,
-          value: message.value.toString(),
+          value: message.value,
         });
-        // const decodedValue = type.fromBuffer(message.value);
-        // console.log(decodedValue);
+        const decodedValue = type.fromBuffer(message.value);
+        console.log(decodedValue);
 
       },
     })
